@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Pilot Ground School</title>
+    <meta name="description" content="A polished self-study hub for Private Pilot ground school with a 52-week plan, progress tracking, and FAA written exam preparation.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background:
+                radial-gradient(circle at top, rgba(117, 165, 203, 0.22), transparent 34%),
+                linear-gradient(180deg, #eef4f8 0%, #f5f0e8 36%, #f7f6f3 100%);
+        }
+
+        header {
+            background: rgba(238, 244, 248, 0.82);
+            border-bottom-color: rgba(22, 62, 87, 0.12);
+        }
+
+        .brand {
+            gap: 16px;
+        }
+
+        .brand-mark {
+            width: 54px;
+            height: 54px;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #0f2c3f, #386393);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 10px 24px rgba(15, 44, 63, 0.18);
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-mark::before {
+            content: "";
+            position: absolute;
+            inset: 10px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+        }
+
+        .brand-mark span {
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            font-size: 11px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .nav-links a {
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a[aria-current="page"] {
+            border-bottom-color: var(--accent);
+        }
+
+        .hero {
+            padding: 58px 0 34px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 14% 22%, rgba(92, 132, 178, 0.16), transparent 20%),
+                radial-gradient(circle at 84% 14%, rgba(255, 255, 255, 0.68), transparent 18%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+        }
+
+        .hero h1 {
+            max-width: 11ch;
+        }
+
+        .lead {
+            max-width: 58ch;
+        }
+
+        .hero-brief,
+        .flight-panel,
+        .route-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-brief {
+            padding: 28px;
+            background: linear-gradient(180deg, #123349 0%, #1f4b69 100%);
+            color: #f8fbfd;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 18px 42px rgba(15, 44, 63, 0.18);
+        }
+
+        .hero-brief .muted,
+        .hero-brief .eyebrow,
+        .hero-brief .mini-label {
+            color: rgba(240, 247, 251, 0.76);
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .hero-metric {
+            padding: 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hero-metric strong,
+        .route-stat strong {
+            display: block;
+            margin-top: 6px;
+            font-size: 21px;
+            line-height: 1.2;
+        }
+
+        .mini-label {
+            color: var(--muted);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .flight-note {
+            border-left: 4px solid rgba(143, 176, 202, 0.7);
+            padding-left: 14px;
+        }
+
+        .panel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .flight-panel,
+        .route-card {
+            padding: 20px;
+        }
+
+        .route-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(241, 246, 250, 0.92));
+            border: 1px solid rgba(22, 62, 87, 0.09);
+        }
+
+        .route-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .route-stat {
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #fbfcfd 0%, #f5f8fb 100%);
+            border: 1px solid #ebeff4;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .section-head p {
+            margin: 0;
+        }
+
+        @media (max-width: 980px) {
+            .panel-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+    <header>
+        <div class="container">
+            <div class="nav">
+                <a href="#top" class="brand" aria-label="Private Pilot Ground School home">
+                    <div class="brand-mark" aria-hidden="true"><span>HDG</span></div>
+                    <div>
+                        <div class="title">Private Pilot Ground School</div>
+                        <small>FAA Knowledge Prep Dashboard</small>
+                    </div>
+                </a>
+                <nav class="nav-links" aria-label="Primary">
+                    <a href="index.html" aria-current="page">Home</a>
+                    <a href="#study-route">Study Route</a>
+                    <a href="#what-you-get">What You Get</a>
+                    <a href="#pace">Pace</a>
+                    <a href="private-pilot-ground-school.html">Open Dashboard</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="reveal">
+                        <div class="eyebrow">Flight deck study guide</div>
+                        <h1>Private Pilot Ground School</h1>
+                        <p class="lead">A self-paced flight school landing page built around the same calm cockpit styling as the course dashboard, with a clear route from first-night study to FAA written readiness.</p>
+                        <div class="tags">
+                            <span class="tag">FAA Knowledge Prep</span>
+                            <span class="tag">52-Week Route</span>
+                            <span class="tag">1 Hour / Night</span>
+                            <span class="tag">Self-Paced</span>
+                        </div>
+                        <div class="cta">
+                            <a class="btn primary" href="private-pilot-ground-school.html">Open Course Dashboard</a>
+                            <a class="btn secondary" href="#study-route">See the Study Route</a>
+                        </div>
+                        <p class="muted fine-print flight-note">This home page is now part of the same standalone course experience, not a separate company site.</p>
+                    </div>
+                    <div class="hero-brief reveal">
+                        <div class="eyebrow">Mission brief</div>
+                        <h2>Train your knowledge before flight training begins.</h2>
+                        <p class="muted">Use the dashboard to track weekly progress, quiz performance, weak areas, and written-exam readiness without forcing yourself into a rigid calendar.</p>
+                        <div class="hero-metrics">
+                            <div class="hero-metric">
+                                <div class="mini-label">Plan length</div>
+                                <strong>52 weeks</strong>
+                            </div>
+                            <div class="hero-metric">
+                                <div class="mini-label">Target pace</div>
+                                <strong>6 hrs / week</strong>
+                            </div>
+                            <div class="hero-metric">
+                                <div class="mini-label">Nightly block</div>
+                                <strong>60 minutes</strong>
+                            </div>
+                            <div class="hero-metric">
+                                <div class="mini-label">Practice bank</div>
+                                <strong>100+ questions</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="study-route">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2>Study Route</h2>
+                        <p class="muted">A long-range plan that stays useful whether you move steadily, sprint ahead, or repeat a week.</p>
+                    </div>
+                </div>
+                <div class="panel-grid">
+                    <div class="flight-panel reveal">
+                        <h3>Weeks 1-16</h3>
+                        <p class="muted">Build the foundation with certification, aviation basics, aerodynamics, systems, flight instruments, performance, and weight and balance.</p>
+                    </div>
+                    <div class="flight-panel reveal">
+                        <h3>Weeks 17-36</h3>
+                        <p class="muted">Move into weather, aviation services, airports, airspace, communications, navigation, charts, VOR, GPS, and flight planning.</p>
+                    </div>
+                    <div class="flight-panel reveal">
+                        <h3>Weeks 37-52</h3>
+                        <p class="muted">Finish with regulations, aeromedical factors, risk management, cross-country scenarios, remediation, and final written-exam prep.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="what-you-get">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2>What You Get</h2>
+                        <p class="muted">Everything in the course dashboard is geared toward answering what to study, what is weak, and whether you are ready.</p>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="item reveal">
+                        <h3>Tonight's Plan</h3>
+                        <p class="muted">A current-week and current-day study prompt with reading, review, daily questions, and notes.</p>
+                    </div>
+                    <div class="item reveal">
+                        <h3>Progress Tracking</h3>
+                        <p class="muted">Study-day completion, weekly closeout, streaks, missed days, and pace indicators stored locally in the browser.</p>
+                    </div>
+                    <div class="item reveal">
+                        <h3>Quiz Engine</h3>
+                        <p class="muted">Original questions only, with subject accuracy, missed-question review, and trend scoring.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pace">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2>Recommended Pace</h2>
+                        <p class="muted">Designed for about an hour a night and roughly six hours per week, without locking progress to dates.</p>
+                    </div>
+                </div>
+                <div class="two-col">
+                    <div class="route-card reveal">
+                        <h3>Suggested Weekly Flow</h3>
+                        <div class="route-list">
+                            <div class="route-stat">
+                                <div class="mini-label">Days 1-2</div>
+                                <strong>PHAK and Jeppesen reading</strong>
+                            </div>
+                            <div class="route-stat">
+                                <div class="mini-label">Days 3-4</div>
+                                <strong>Note consolidation and applied scenarios</strong>
+                            </div>
+                            <div class="route-stat">
+                                <div class="mini-label">Days 5-6</div>
+                                <strong>Practice questions and weak-spot repair</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="route-card reveal">
+                        <h3>Launch the Dashboard</h3>
+                        <p class="muted">The full course page includes the 52-week tracker, editable notes, calendar completion view, weekly reviews, readiness meter, and data tools.</p>
+                        <div class="cta">
+                            <a class="btn primary" href="private-pilot-ground-school.html">Go to Dashboard</a>
+                            <a class="btn secondary" href="private-pilot-ground-school.html#quiz">Jump to Quizzes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; <span id="y"></span> Private Pilot Ground School · Self-paced FAA knowledge prep
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('y').textContent = new Date().getFullYear();
+
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const header = document.querySelector('header');
+        const onScroll = () => {
+            if (window.scrollY > 4) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        if (!prefersReduced && 'IntersectionObserver' in window) {
+            const revealEls = document.querySelectorAll('.reveal');
+            const io = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+            revealEls.forEach((element) => io.observe(element));
+        } else {
+            document.querySelectorAll('.reveal').forEach((element) => element.classList.add('is-visible'));
+        }
+    </script>
+</body>
+</html>
